@@ -1,0 +1,15 @@
+User-Agent: *
+Disallow: /
+
+Disallow: /admin77
+Disallow: /blocks
+Disallow: /files/files_upload
+Disallow: /files/leads
+Disallow: /files/pdf
+Disallow: /libs
+Disallow: /modules
+Disallow: /pages_include
+Disallow: /tmp
+Disallow: /webstat
+Disallow: /config.php
+Disallow: /init.php

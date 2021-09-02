@@ -1,0 +1,51 @@
+SetEnvIfNoCase User-Agent "^Googlebot" search_bot
+SetEnvIfNoCase User-Agent "^Yandex" search_bot
+SetEnvIfNoCase User-Agent "^Yahoo" search_bot
+SetEnvIfNoCase User-Agent "^Aport" search_bot
+SetEnvIfNoCase User-Agent "^msnbot" search_bot
+SetEnvIfNoCase User-Agent "^spider" search_bot
+SetEnvIfNoCase User-Agent "^Robot" search_bot
+SetEnvIfNoCase User-Agent "^php" search_bot
+SetEnvIfNoCase User-Agent "^Mail" search_bot
+SetEnvIfNoCase User-Agent "^bot" search_bot
+SetEnvIfNoCase User-Agent "^igdeSpyder" search_bot
+SetEnvIfNoCase User-Agent "^Snapbot" search_bot
+SetEnvIfNoCase User-Agent "^WordPress" search_bot
+SetEnvIfNoCase User-Agent "^BlogPulseLive" search_bot
+SetEnvIfNoCase User-Agent "^Parser" search_bot
+
+
+
+
+
+
+Options -Indexes
+Options +FollowSymLinks
+
+RewriteEngine On
+#Если с httpS: RewriteCond %{HTTPS} off
+#Если с httpS: RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#Если с httpS: RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+RewriteBase /
+
+RewriteCond %{REQUEST_URI} !^/admin77(/(.*)|$)
+RewriteCond %{REQUEST_URI} !^/libs(/(.*)|$)
+RewriteRule ^(.+)/$ $1 [R=301,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule .* index.php [L]
+
+AddType image/jpeg  jpeg jpg jpe JPG
+AddType application/download .pdf
+AddType application/octet-stream .pdf
+AddType application/force-download  .pdf
+AddType application/download .doc
+AddType application/octet-stream .doc
+AddType application/force-download  .doc
+AddType application/download .docx
+AddType application/octet-stream .docx
+AddType application/force-download  .docx
